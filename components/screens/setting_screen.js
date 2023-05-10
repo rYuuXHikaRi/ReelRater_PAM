@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
-export default function SettingScreen() {
+const SettingScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button_profile}>
@@ -32,6 +32,8 @@ export default function SettingScreen() {
   );
 }
 
+export default SettingScreen;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -41,9 +43,9 @@ const styles = StyleSheet.create({
   },
   button_profile: {
     backgroundColor: '#2E4F4F',
-    position: absolute,
-    width: 390 px,
-    height: 101 px,
+    position: "absolute",
+    width: 390,
+    height: 101,
     left: 0,
     top: 0,
   },

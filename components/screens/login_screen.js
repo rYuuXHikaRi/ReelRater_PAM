@@ -1,8 +1,10 @@
-import React from "react";
-import {StyleSheet,Text,View,Image,Pressable,} from "react-native";
+import React, { useState } from "react";
+import {StyleSheet,Text,View,TextInput} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 const LoginPage = ({navigation}) => {
+    const [start, setAwal] = useState("");
+
     return(
         <View style={styles.container}>
             <View style={styles.BoxLogin}>
@@ -13,13 +15,23 @@ const LoginPage = ({navigation}) => {
                     Email or Phone Number
                 </Text>
                 <Icon name="mail" size={20} style={{position: "absolute", color: "white", top: 139, left: 29}} ></Icon>
-                <View style={styles.line}></View>
+                <View style={styles.line}>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={(val) => setAwal(val)}
+                    />
+                </View>
                 <Text style={styles.pass}>
                     Password
                 </Text>
                 <Icon name="lock-closed" size={20} style={{position: "absolute", color: "white", top: 220, left: 29}} ></Icon>
                 <Icon name="ios-eye" size={20} style={{position: "absolute", color: "white", top: 223, left: 300}} ></Icon>
-                <View style={styles.line2}></View>
+                <View style={styles.line2}>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={(val) => setAwal(val)}
+                    />
+                </View>
                 <View style={styles.BoxLogin2}>
                     <Text style={styles.login}>
                         Login
@@ -82,7 +94,7 @@ const styles = StyleSheet.create({
     email: {
         position: "absolute",
         color: "white",
-        top: 110,
+        top: 100,
         left: 32,
         fontSize: 16,
         fontWeight: "bold",
@@ -131,10 +143,19 @@ const styles = StyleSheet.create({
         height: 44,
         left: 109,
         top: 742,
-        fontFamily: "Inter",
         fontSize: 36,
         fontWeight: "bold",
         textAlign: "center",
+    },
+    input: {
+        position:"absolute",
+        top: -30,
+        width: 189,
+        height: 40,
+        width: 351,
+        marginLeft: 20,
+        borderWidth: 1,
+        borderColor:"transparent",
     },
 
 })

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text,View,StyleSheet,StatusBar,SafeAreaView, Image, TextInput, Pressable, ScrollView,} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import Icon from "react-native-vector-icons/Ionicons";
 
 
 const Home = ({navigation}) => {
@@ -171,7 +171,15 @@ const Home = ({navigation}) => {
                             </View>
                     </ScrollView>
                 </View>
+
+
             </View>
+                <View style={styles.BoxNavbar}>
+                    <Icon name="home-sharp" size={35} style={{color: "black", left: 20}} ></Icon>
+                    <Icon name="ios-search" size={35} style={{color: "black", top: -34, left: 120}} ></Icon>
+                    <Icon name="md-trending-up-outline" size={39} style={{color: "black", top: -74, left: 220}} ></Icon>
+                    <Icon name="ios-settings" size={35} style={{color: "black", top: -115, left:324}} ></Icon>
+                </View>
         </View>
     )
 }
@@ -215,5 +223,15 @@ const styles = StyleSheet.create({
         borderRadius: 10,
 
         marginBottom: 0.009,
-    }
+    },
+    BoxNavbar: {
+        position: "absolute",
+        backgroundColor: "#CBE4DE",
+        width: "100%",
+        height: 40,
+        top: 820,
+        marginRight: 20,
+        justifyContent: "space-between",
+        alignItems: "baseline",
+      },
 })

@@ -5,7 +5,7 @@ import {
     StyleSheet,
     SafeAreaView
 } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import Octicons from "react-native-vector-icons/Octicons";
 
 // local
 
@@ -14,9 +14,9 @@ import SafeViewAndroid from "./SafeViewAndroid";
 class Header extends Component {
     render() {
         return (
-            <SafeAreaView style={[SafeViewAndroid.AndroidSafeArea, {backgroundColor: this.props.whichPage === "AboutDev" ? "#CBE4DE" : "#CBE4DE",}]}>
-                <View style={[styles.container, {backgroundColor: "black"}]}>
-                    <Icon name="ios-arrow-back-sharp" size={25} style={{color: "#CBE4DE"}} ></Icon>
+            <SafeAreaView>
+                <View style={[styles.container, {backgroundColor: "#2C3333"}]}>
+                    <Octicons name="arrow-left" size={30} style={{color: "#CBE4DE"}}/>
                     <Text style={styles.headerText}>{this.props.headerTitle}</Text>
                     <View style={styles.dummyItem}></View>   
                 </View>
@@ -28,9 +28,9 @@ export default Header;
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection : 'row',
-        height: 59,
+        height: 60,
         alignItems : "center",
+        flexDirection: "row",
         justifyContent: 'space-between',
         backgroundColor: "#CBE4DE",
 
@@ -38,12 +38,9 @@ const styles = StyleSheet.create({
         paddingLeft: 13,
     },
     headerText:{
-        fontStyle: "normal",
         fontWeight: "700",
-        fontSize: 16,
+        fontSize: 20,
         color: "#CBE4DE",
-
-        alignSelf: "center",
     },
     dummyItem : {
         width: 280,

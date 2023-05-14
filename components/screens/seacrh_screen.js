@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import {StyleSheet,Text,View,TextInput} from "react-native";
+import {StyleSheet, View, TextInput, SafeAreaView, StatusBar} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
+import SafeViewAndroid from '../SafeViewAndroid';
+import Navbar from '../Navbar';
 const SearchPage = ({ navigation }) => {
     const [start, setAwal] = useState("");
 
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={[styles.container, SafeViewAndroid.AndroidSafeArea]}>
         <View style={styles.BoxHeader}>
           <Icon name="ios-search" size={35} style={{color: "black", marginTop: -3, left: 12, height: 35}} ></Icon>
             <TextInput
@@ -15,20 +17,17 @@ const SearchPage = ({ navigation }) => {
               onChangeText={(val) => setAwal(val)}
             />
         </View>
-        <View style={styles.BoxNavbar}>
-          <Icon name="home-sharp" size={35} style={{color: "black", left: 20}} ></Icon>
-          <Icon name="ios-search" size={35} style={{color: "black", top: -34, left: 120}} ></Icon>
-          <Icon name="md-trending-up-outline" size={39} style={{color: "black", top: -74, left: 220}} ></Icon>
-          <Icon name="ios-settings" size={35} style={{color: "black", top: -115, left:324}} ></Icon>
+        <View style={{position: "absolute", bottom: 0,}}>
+          <Navbar whichPage="search"/>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 
   const styles = StyleSheet.create({
     container: {
-      backgroundColor:"#2E4F4F",
-      flex: 1
+      flex: 1,
+      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     BoxHeader: {
       backgroundColor: "#D9D9D9",
@@ -36,18 +35,8 @@ const SearchPage = ({ navigation }) => {
       height: 50,
       borderRadius: 30,
       margin: 20,
-      top: 40,
+      marginTop: 37,
       justifyContent: "center",
-    },
-    BoxNavbar: {
-        position: "absolute",
-        backgroundColor: "#CBE4DE",
-        width: "100%",
-        height: 40,
-        top: 764,
-        marginRight: 20,
-        justifyContent: "space-between",
-        alignItems: "baseline",
     },
     input: {
         position:"absolute",

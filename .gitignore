@@ -10,8 +10,22 @@ npm-debug.*
 *.orig.*
 web-build/
 
+.gitignore
+
 # macOS
 .DS_Store
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
+
+App.js 
+app.json
+babel.config.js 
+README.md
+components/screens/test_screen.js
+package-lock.json
+components/screens/detail_screen.js
+components/screens/login_screen.js
+components/screens/regist_screen.js
+components/screens/setting_screen.js
+components/screens/splash_screen.js

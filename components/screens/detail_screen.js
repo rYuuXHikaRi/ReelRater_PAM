@@ -1,16 +1,14 @@
 import React from "react";
-import {StyleSheet,Text,View,Image,Pressable,} from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import {StyleSheet,Text,View,Image, SafeAreaView, StatusBar} from "react-native";
+
+import SafeViewAndroid from '../SafeViewAndroid';
+import Header from '../Header';
 
 const DetailPage = ({ navigation }) => {
-
     return (
-      <View style={styles.container}>
-        <View style={styles.BoxHeader}>
-          <Icon name="ios-arrow-back-sharp" size={35} style={{color: "#CBE4DE"}} ></Icon>
-          <Text style={styles.detail}>
-            Detail
-          </Text>
+      <SafeAreaView style={[styles.container, SafeViewAndroid.AndroidSafeArea]}>
+        <View style={styles.garis}>
+          <Header headerTitle="   Detail"/>
         </View>
         <View style={styles.BoxGambar}>
           <Image source={require("../../assets/buya_hamka.png")} style={styles.gambar} />
@@ -55,34 +53,15 @@ const DetailPage = ({ navigation }) => {
           lepas dari berbagai konflik, termasuk kedatangan Jepang ke Indonesia.
           </Text>
         </View>
-        <View style={styles.BoxNavbar}>
-          <Icon name="home-sharp" size={35} style={{color: "black", left: 20}} ></Icon>
-          <Icon name="ios-search" size={35} style={{color: "black", top: -34, left: 120}} ></Icon>
-          <Icon name="md-trending-up-outline" size={39} style={{color: "black", top: -74, left: 220}} ></Icon>
-          <Icon name="ios-settings" size={35} style={{color: "black", top: -115, left:324}} ></Icon>
-        </View>
-      </View>
+      </SafeAreaView>
     );
   }
 
   const styles = StyleSheet.create({
     container: {
-      backgroundColor:"#2E4F4F",
-      flex: 1
-    },
-    BoxHeader: {
-      backgroundColor: "black",
-      width: "100%",
-      height: 40,
-      top: 29,
-    },
-    detail: {
-      color: "#CBE4DE",
-      fontSize: 22,
-      fontWeight: "bold",
-      textAlign: "left",
-      left: 36,
-      top: -35,
+      backgroundColor:"#2C3333",
+      flex: 1,
+      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
     BoxGambar: {
       position: "absolute",
@@ -118,7 +97,7 @@ const DetailPage = ({ navigation }) => {
     },
     BoxJenis: {
       position: "absolute",
-      backgroundColor: "#335758",
+      backgroundColor: "#2C3333",
       width: 70,
       height: 25,
       left: 100,
@@ -129,7 +108,7 @@ const DetailPage = ({ navigation }) => {
     },
     BoxJenis2: {
       position: "absolute",
-      backgroundColor: "#335758",
+      backgroundColor: "#2C3333",
       width: 70,
       height: 25,
       left: 180,
@@ -161,28 +140,18 @@ const DetailPage = ({ navigation }) => {
     },
     BoxSinopsis: {
       position: "absolute",
-      backgroundColor: "#335758",
+      backgroundColor: "#2C3333",
       width: 350,
       height: 200,
       left: 15,
       top: 500,
     },
-    BoxNavbar: {
-      position: "absolute",
-      backgroundColor: "#CBE4DE",
-      width: "100%",
-      height: 40,
-      top: 764,
-      marginRight: 20,
-      justifyContent: "space-between",
-      alignItems: "baseline",
-    },
     BoxJudul: {
-      backgroundColor: "#2E4F4F",
+      backgroundColor: "#2C3333",
       width: 190,
       height: 160,
       left: 180,
-      top: 110,
+      top: 70,
       borderRadius: 10,
     },
     cast: {

@@ -24,3 +24,8 @@ babel.config.js
 README.md
 components/screens/test_screen.js
 package-lock.json
+components/screens/detail_screen.js
+components/screens/login_screen.js
+components/screens/regist_screen.js
+components/screens/setting_screen.js
+components/screens/splash_screen.js

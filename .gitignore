@@ -31,3 +31,6 @@ components/screens/home_screen.js
 components/Header.js
 components/Navbar.js
 components/SafeViewAndroid.js
+components/screens/detail_screen.js
+components/screens/home_screen.js
+components/screens/setting_screen.js

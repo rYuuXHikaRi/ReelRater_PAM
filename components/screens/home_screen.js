@@ -2,10 +2,14 @@ import React from 'react';
 import {Text,View,StyleSheet,StatusBar,SafeAreaView, Image, TextInput, Pressable, ScrollView,} from 'react-native';
 import Icon from "react-native-vector-icons/Ionicons";
 
+import SafeViewAndroid from '../SafeViewAndroid';
+import Header from '../Header';
+import Navbar from '../Navbar';
+
 
 const Home = ({navigation}) => {
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={[styles.container, SafeViewAndroid.AndroidSafeArea]}>
             <View style={styles.contentArea}>
                 <View style={styles.greetingUser}>
                     <View style={{width: 152, height: 46, flexDirection:"column", alignContent: "center", justifyContent: "center"}}>
@@ -18,7 +22,7 @@ const Home = ({navigation}) => {
                 </View>
 
                 
-                <View>
+                <View style={{marginBottom: 170}}>
                     <ScrollView>
                         <View style={styles.moviesCatalog}>
                                 <Text style={styles.catalogText}>New Movies</Text>
@@ -174,13 +178,10 @@ const Home = ({navigation}) => {
 
 
             </View>
-                <View style={styles.BoxNavbar}>
-                    <Icon name="home-sharp" size={35} style={{color: "black", left: 20}} ></Icon>
-                    <Icon name="ios-search" size={35} style={{color: "black", top: -34, left: 120}} ></Icon>
-                    <Icon name="md-trending-up-outline" size={39} style={{color: "black", top: -74, left: 220}} ></Icon>
-                    <Icon name="ios-settings" size={35} style={{color: "black", top: -115, left:324}} ></Icon>
+                <View style={{position: "absolute", bottom: 0,}}>
+                    <Navbar whichPage="home"/>
                 </View>
-        </View>
+        </SafeAreaView>
     )
 }
 

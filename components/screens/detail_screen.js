@@ -4,7 +4,7 @@ import {StyleSheet,Text,View,Image, SafeAreaView, StatusBar} from "react-native"
 import SafeViewAndroid from '../SafeViewAndroid';
 import Header from '../Header';
 
-const DetailPage = ({ navigation }) => {
+const DetailPage = ({ avigation }) => {
     return (
       <SafeAreaView style={[styles.container, SafeViewAndroid.AndroidSafeArea]}>
         <View style={styles.garis}>

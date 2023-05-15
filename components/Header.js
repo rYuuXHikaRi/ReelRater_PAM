@@ -3,7 +3,8 @@ import {
     View,
     Text,
     StyleSheet,
-    SafeAreaView
+    SafeAreaView,
+    Pressable
 } from "react-native";
 import Octicons from "react-native-vector-icons/Octicons";
 
@@ -16,7 +17,9 @@ class Header extends Component {
         return (
             <SafeAreaView>
                 <View style={[styles.container, {backgroundColor: "#2C3333"}]}>
-                    <Octicons name="arrow-left" size={30} style={{color: "#CBE4DE"}}/>
+                    <Pressable>
+                        <Octicons name="arrow-left" size={30} style={{color: "#CBE4DE"}}/>
+                    </Pressable>
                     <Text style={styles.headerText}>{this.props.headerTitle}</Text>
                     <View style={styles.dummyItem}></View>   
                 </View>

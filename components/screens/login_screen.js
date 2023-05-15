@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import {StyleSheet,Text,View,TextInput} from "react-native";
+import {StyleSheet,Text,View,TextInput,SafeAreaView, StatusBar, Pressable} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
+import SafeViewAndroid from '../SafeViewAndroid';
 const LoginPage = ({navigation}) => {
     const [start, setAwal] = useState("");
 
     return(
-        <View style={styles.container}>
+        <SafeAreaView style={[styles.container, SafeViewAndroid.AndroidSafeArea]}>
             <View style={styles.BoxLogin}>
                 <Text style={styles.in}>
                     Log In
@@ -40,21 +41,23 @@ const LoginPage = ({navigation}) => {
                 <Text style={styles.any}>
                     Don't have an account yet?
                 </Text>
-                <Text style={styles.any2}>
-                    Create one here
-                </Text>
+                <Pressable>
+                    <Text style={styles.any2}>
+                        Create one here
+                    </Text>
+                </Pressable>
             </View>
             <Text style={styles.reel}>
                 ReelRater
             </Text>
-        </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-      backgroundColor:"#2E4F4F",
-      flex: 1
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        flex: 1
     },
     BoxLogin: {
         position: "absolute",
@@ -126,14 +129,17 @@ const styles = StyleSheet.create({
         borderRadius: 1,
     },
     any: {
+        color: "#CBE4DE",
         position: "absolute",
         left: 95,
         top: 358,
     },
     any2: {
+        color: "#CBE4DE",
         position: "absolute",
         left: 127,
-        top: 374,
+        top: 377,
+        fontWeight: "bold",
         textDecorationLine: "underline",
     },
     reel: {
@@ -153,7 +159,7 @@ const styles = StyleSheet.create({
         width: 189,
         height: 40,
         width: 351,
-        marginLeft: 20,
+        marginLeft: 27,
         borderWidth: 1,
         borderColor:"transparent",
     },

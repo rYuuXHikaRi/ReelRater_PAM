@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import {StyleSheet,Text,View,TextInput} from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import {StyleSheet,Text,View,TextInput,SafeAreaView,StatusBar} from "react-native";
 
+import SafeViewAndroid from '../SafeViewAndroid';
+import Header from '../Header';
+import Navbar from '../Navbar';
 const RegisterPage = ({ navigation }) => {
   const [start, setAwal] = useState("");
 
     return (
-      <View style={styles.container}>
-        <View style={styles.BoxHeader}>
-          <Icon name="ios-arrow-back-sharp" size={35} style={{color: "#CBE4DE"}} ></Icon>
-          <Text style={styles.register}>
-            Register
-          </Text>
+      <SafeAreaView style={[styles.container, SafeViewAndroid.AndroidSafeArea]}>
+        <View style={styles.garis}>
+          <Header headerTitle="   Register"/>
         </View>
         <View style={styles.form}>
             <Text style={styles.title}>Complete your personal data correctly</Text>
@@ -54,36 +53,28 @@ const RegisterPage = ({ navigation }) => {
         <Text style={styles.reel}>
             ReelRater
         </Text>
-      </View>
+      </SafeAreaView>
     );
   }
 
   const styles = StyleSheet.create({
     container: {
-      backgroundColor:"#2E4F4F",
+      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
       flex: 1
     },
-    BoxHeader: {
-      backgroundColor: "black",
-      width: "100%",
-      height: 40,
-      top: 29,
-    },
-    register: {
-      color: "#CBE4DE",
-      fontSize: 22,
-      fontWeight: "bold",
-      textAlign: "left",
-      left: 36,
-      top: -35,
-    },
     form: {
-        backgroundColor: "#2E4F4F",
+        backgroundColor: "#2C3333",
         position: "absolute",
         width: 321,
         height: 293,
         left: 32,
         top: 193,
+    },
+    garis: {
+      width: "100%",
+      height: 62,
+      backgroundColor: "#BCBCBC",
+      borderRadius: 1,
     },
     title: {
         color: "#CBE4DE",

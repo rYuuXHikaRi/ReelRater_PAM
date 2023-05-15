@@ -16,7 +16,6 @@ export default function App() {
 
                       name="login"
                       component={LoginPage}
-
                       options={{ headerShown: false}}
                   />
                 </Stack.Navigator>

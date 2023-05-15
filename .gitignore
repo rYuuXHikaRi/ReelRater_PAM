@@ -21,3 +21,4 @@ babel.config.js
 README.md
 package-lock.json
 components\screens\test_screen.js
+components/screens/test_screen.js

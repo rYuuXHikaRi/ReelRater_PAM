@@ -1,9 +1,7 @@
 import React from 'react';
 import {Text,View,StyleSheet,StatusBar,SafeAreaView, Image, TextInput, Pressable, ScrollView,} from 'react-native';
-import Icon from "react-native-vector-icons/Ionicons";
 
 import SafeViewAndroid from '../SafeViewAndroid';
-import Header from '../Header';
 import Navbar from '../Navbar';
 
 

@@ -17,7 +17,7 @@ class Navbar extends Component {
         return (
                 <View style={[styles.container, {backgroundColor: "#CBE4DE"}]}>
                     <Pressable style={styles.itemNavbar}>
-                        <Foundation name="home" se={30} style={{color: this.props.whichPage === "home" ? "#0E8388" : "#2C3333"}}/>
+                        <Foundation name="home" size={30} style={{color: this.props.whichPage === "home" ? "#0E8388" : "#2C3333"}}/>
                         <Text style={{fontSize: 12, fontWeight:"400", color: this.props.whichPage === "home" ? "#0E8388" : "#2C3333"}}>Home</Text>
                     </Pressable>
                     <Pressable style={styles.itemNavbar}>

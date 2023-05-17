@@ -1,1 +1,2 @@
 # ReelRater_PAM
+ReelRater merupakan salah satu aplikasi daftar film yang dirancang untuk membantu pengguna dalam mengorganisir, menyimpan, dan mencari informasi mengenai berbagai film. Aplikasi ReelRater ini membantu pengguna dalam menjelajahi dunia film dengan lebih mudah dan teratur. Dengan fitur-fitur yang disediakan, pengguna dapat menemukan film baru yang menarik, mendapatkan informasi yang diperlukan, dan mengelola pengalaman menonton dengan lebih baik. Adapun fitur-fitur yang tersedia dalam aplikasi ini dapat dilihat pada slide berikutnya 

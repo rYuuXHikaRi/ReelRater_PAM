@@ -4,7 +4,6 @@ import Icon from "react-native-vector-icons/Feather";
 import Icon2 from "react-native-vector-icons/Ionicons";
 
 import SafeViewAndroid from '../SafeViewAndroid';
-import Header from '../Header';
 import Navbar from '../Navbar';
 
 const SettingScreen = ({navigation}) => {
@@ -12,7 +11,7 @@ const SettingScreen = ({navigation}) => {
     <SafeAreaView style={[styles.container, SafeViewAndroid.AndroidSafeArea]}>
       <View style={styles.button_profile}>
         <View style={styles.gambar}>
-            <Image source={require("../../assets/profile.png")} style={styles.gambar} />
+            <Image source={require("../../assets/Images/profile.png")} style={styles.gambar} />
         </View>
         <Text style={styles.buttonText_profile}>Username</Text>
       </View>
@@ -28,7 +27,7 @@ const SettingScreen = ({navigation}) => {
         <Icon name="info" size={29} style={{color: "black", marginLeft: 12}} ></Icon>
         <Text style={styles.buttonText}>About App</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button_logout}>
+      <TouchableOpacity style={styles.button_logout} onPress={() => navigation.reset({index: 0, routes: [{name: 'login'}]})}>
         <Icon name="log-out" size={29} style={{color: "black", marginLeft: 20, marginTop: 5}} ></Icon>
         <Text style={styles.buttonText_logout}>Log Out</Text>
       </TouchableOpacity>

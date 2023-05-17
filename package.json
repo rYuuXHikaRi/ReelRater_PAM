@@ -13,8 +13,10 @@
     "@react-navigation/stack": "^6.3.16",
     "expo": "~48.0.15",
     "expo-status-bar": "~1.4.4",
+    "firebase": "^9.22.0",
     "react": "18.2.0",
-    "react-native": "0.71.7",
+    "react-event-observer": "^0.5.11",
+    "react-native": "0.71.8",
     "react-native-vector-icons": "^9.2.0",
     "react-navigation": "^4.4.4"
   },

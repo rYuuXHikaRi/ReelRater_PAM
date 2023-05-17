@@ -20,7 +20,7 @@ const Home = ({navigation}) => {
                 </View>
 
                 
-                <View style={{marginBottom: 170}}>
+                <View style={{marginBottom: 160}}>
                     <ScrollView>
                         <View style={styles.moviesCatalog}>
                                 <Text style={styles.catalogText}>New Movies</Text>
@@ -176,9 +176,9 @@ const Home = ({navigation}) => {
 
 
             </View>
-                <View style={{position: "absolute", bottom: 0,}}>
-                    <Navbar whichPage="home"/>
-                </View>
+            <View style={{position: "absolute", bottom: 0,}}>
+                <Navbar whichPage="home"/>
+            </View>
         </SafeAreaView>
     )
 }
@@ -215,6 +215,7 @@ const styles = StyleSheet.create({
     },
     catalogBox: {
         marginRight: 12.77,
+        marginBottom: 10,
     },
     moviePoster: {
         width: 106.42, 

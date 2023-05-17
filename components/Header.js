@@ -7,17 +7,15 @@ import {
     Pressable
 } from "react-native";
 import Octicons from "react-native-vector-icons/Octicons";
-
-// local
-
-import SafeViewAndroid from "./SafeViewAndroid";
+import { useNavigation  } from "@react-navigation/native";
 
 class Header extends Component {
     render() {
+        const { navigation } = this.props;
         return (
             <SafeAreaView>
                 <View style={[styles.container, {backgroundColor: "#2C3333"}]}>
-                    <Pressable>
+                    <Pressable onPress={() => this.props.navigation.goBack()}>
                         <Octicons name="arrow-left" size={30} style={{color: "#CBE4DE"}}/>
                     </Pressable>
                     <Text style={styles.headerText}>{this.props.headerTitle}</Text>
@@ -27,7 +25,10 @@ class Header extends Component {
         );
     }
 }
-export default Header;
+export default function (props) {
+    const navigation = useNavigation();
+    return <Header {...props} navigation={navigation} />;
+  };;
 
 const styles = StyleSheet.create({
     container: {

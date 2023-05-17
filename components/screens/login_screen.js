@@ -2,9 +2,35 @@ import React, { useState } from "react";
 import {StyleSheet,Text,View,TextInput,SafeAreaView, StatusBar, Pressable} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
+// Firebase
+import { signInWithEmailAndPassword} from 'firebase/auth';
+import { firebaseAuthentication } from '../config/firebase';
+
+// Local
+import AuthObserver from "../config/AuthObserver";
+
 import SafeViewAndroid from '../SafeViewAndroid';
 const LoginPage = ({navigation}) => {
-    const [start, setAwal] = useState("");
+    const [loginData, setLoginData] =  useState({userName: '', passWord: ''});
+
+    const updateUserName = (userNameValue) => {
+        setLoginData({...loginData, userName: userNameValue});
+    }
+
+    const updatePassWord = (passWordValue) => {
+        setLoginData({...loginData, passWord: passWordValue});
+    }
+    
+    const handleLogin = () => {
+        if(loginData["userName"] !== null && loginData["passWord"] !== null) {
+            signInWithEmailAndPassword(firebaseAuthentication, loginData["userName"], loginData["passWord"])
+            .then((userCredential) => {
+                const user = userCredential.user;
+                navigation.replace("authObserver");
+            })
+            .catch((err) => alert(err));
+        }
+    }
 
     return(
         <SafeAreaView style={[styles.container, SafeViewAndroid.AndroidSafeArea]}>
@@ -18,8 +44,9 @@ const LoginPage = ({navigation}) => {
                 <Icon name="mail" size={20} style={{position: "absolute", color: "white", top: 139, left: 29}} ></Icon>
                 <View style={styles.line}>
                     <TextInput
+                        placeholder="Email or Phone Number"
                         style={styles.input}
-                        onChangeText={(val) => setAwal(val)}
+                        onChangeText={(val) => updateUserName(val)}
                     />
                 </View>
                 <Text style={styles.pass}>
@@ -29,20 +56,22 @@ const LoginPage = ({navigation}) => {
                 <Icon name="ios-eye" size={20} style={{position: "absolute", color: "white", top: 223, left: 300}} ></Icon>
                 <View style={styles.line2}>
                     <TextInput
+                        placeholder="Password"
                         style={styles.input}
-                        onChangeText={(val) => setAwal(val)}
+                        secureTextEntry={true}
+                        onChangeText={(val) => updatePassWord(val)}
                     />
                 </View>
-                <View style={styles.BoxLogin2}>
+                <Pressable onPress={() => handleLogin()} style={styles.BoxLogin2}>
                     <Text style={styles.login}>
                         Login
                     </Text>
-                </View>
+                </Pressable>
                 <Text style={styles.any}>
                     Don't have an account yet?
                 </Text>
                 <Pressable>
-                    <Text style={styles.any2}>
+                    <Text style={styles.any2}  onPress={() => navigation.navigate("register")}>
                         Create one here
                     </Text>
                 </Pressable>
@@ -56,8 +85,7 @@ const LoginPage = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-        flex: 1
+        flex: 1,
     },
     BoxLogin: {
         position: "absolute",

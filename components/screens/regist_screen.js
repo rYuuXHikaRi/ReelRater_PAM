@@ -1,12 +1,54 @@
 import React, { useState } from "react";
-import {StyleSheet,Text,View,TextInput,SafeAreaView,StatusBar} from "react-native";
+import {StyleSheet,Text,View,TextInput,SafeAreaView,StatusBar, Pressable} from "react-native";
+
+import { firebaseAuthentication } from "../config/firebase";
+import { createUserWithEmailAndPassword, sendEmailVerification, signOut, updateProfile } from 'firebase/auth';
 
 import SafeViewAndroid from '../SafeViewAndroid';
 import Header from '../Header';
-import Navbar from '../Navbar';
-const RegisterPage = ({ navigation }) => {
-  const [start, setAwal] = useState("");
 
+const RegisterPage = ({ navigation }) => {
+  const [registerData, setRegisterData] =  useState({userName: '', passWord: '', fullName: '', phoneNumber: ''});
+
+  const updateUserName = (userNameValue) => {
+    setRegisterData({...registerData, userName: userNameValue});
+  }
+
+  const updatePassWord = (passWordValue) => {
+    setRegisterData({...registerData, passWord: passWordValue});
+  }
+
+  const updateFullName = (fullNameValue) => {
+    setRegisterData({...registerData, fullName: fullNameValue});
+  }
+
+  const updatePhoneNumber = (phoneNumberValue) => {
+    setRegisterData({...registerData, phoneNumber: phoneNumberValue});
+  }
+
+  const onSignUpHandle = () => {
+    if(registerData["userName"] !== null && registerData["passWord"] !== null) {
+        createUserWithEmailAndPassword(firebaseAuthentication,registerData["userName"], registerData["passWord"])
+        .then((userCredential) => {
+            const user = userCredential.user;
+                updateProfile(firebaseAuthentication.currentUser, {
+                    displayName: registerData["fullName"]
+                }).then(() => {
+                    signOut(firebaseAuthentication).then(() => {
+                        console.log("Regist sukses coy");
+                        navigation.replace("login");
+                    }).catch((errors) => {
+                        alert(errors.message)
+                    })
+                }).catch((error) => {
+                    alert(error.message);
+                })
+        })
+        .catch((err) => {
+            alert(err)
+        })
+    }
+}
     return (
       <SafeAreaView style={[styles.container, SafeViewAndroid.AndroidSafeArea]}>
         <View style={styles.garis}>
@@ -19,14 +61,14 @@ const RegisterPage = ({ navigation }) => {
             <View style={styles.line}>
               <TextInput
                 style={styles.input}
-                onChangeText={(val) => setAwal(val)}
+                onChangeText={(val) => updateFullName(val)}
               />
             </View>
             <Text style={styles.name}>E-mail*</Text>
             <View style={styles.line}>
             <TextInput
                 style={styles.input}
-                onChangeText={(val) => setAwal(val)}
+                onChangeText={(val) => updateUserName(val)}
               />
             </View>
             <Text style={styles.phone}>Phone Number*</Text>
@@ -34,22 +76,22 @@ const RegisterPage = ({ navigation }) => {
             <View style={styles.line2}>
             <TextInput
                 style={styles.input}
-                onChangeText={(val) => setAwal(val)}
+                onChangeText={(val) => updatePhoneNumber(val)}
               />
             </View>
             <Text style={styles.name}>Password*</Text>
             <View style={styles.line}>
             <TextInput
                 style={styles.input}
-                onChangeText={(val) => setAwal(val)}
+                onChangeText={(val) => updatePassWord(val)}
               />
             </View>
         </View>
-        <View style={styles.BoxSubmit}>
+        <Pressable onPress={() => onSignUpHandle()} style={styles.BoxSubmit}>
           <Text style={styles.submit}>
             Register
           </Text>
-        </View>
+        </Pressable>
         <Text style={styles.reel}>
             ReelRater
         </Text>

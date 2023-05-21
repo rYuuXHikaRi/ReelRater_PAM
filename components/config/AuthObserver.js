@@ -1,5 +1,4 @@
 import { onAuthStateChanged } from "firebase/auth";
-import ReactObserver from "react-event-observer";
 
 //local component
 import { firebaseAuthentication } from './firebase';
@@ -9,10 +8,11 @@ const AuthObserver = ({navigation}) => {
     onAuthStateChanged(firebaseAuthentication, (user) => {
         if(user) {
             console.log("Sukses Coy");
-            navigation.replace("home");
+            navigation.replace("home", {
+                displayName: user.displayName,
+            });
         } else {
-            console.log("Logout Coy");
-            navigation.replace("login");
+            navigation.reset({index: 0, routes: [{name: 'login'}]});
         }
     })
 }

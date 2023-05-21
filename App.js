@@ -19,20 +19,15 @@ export default function App() {
           <NavigationContainer>
                 <Stack.Navigator>
                 <Stack.Screen
-                      name="authObserver"
-                      component={AuthObserver}
-                      options={{ headerShown: false}}
-                  /> 
-                <Stack.Screen
                       name="login"
                       component={LoginPage}
                       options={{ headerShown: false}}
                   />
-                  <Stack.Screen
+                <Stack.Screen
                       name="register"
                       component={RegisterPage}
                       options={{ headerShown: false}}
-                  />            
+                  />           
                   <Stack.Screen
                       name="home"
                       component={Home}
@@ -58,6 +53,12 @@ export default function App() {
                       component={SettingScreen}
                       options={{ headerShown: false}}
                   />
+
+                  <Stack.Screen
+                      name="authObserver"
+                      component={AuthObserver}
+                      options={{ headerShown: false}}
+                  />  
                 </Stack.Navigator>
           </NavigationContainer>
   );

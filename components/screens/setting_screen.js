@@ -2,11 +2,23 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, Image, SafeAreaView, StatusBar} from 'react-native';
 import Icon from "react-native-vector-icons/Feather";
 import Icon2 from "react-native-vector-icons/Ionicons";
+import { useRoute } from "@react-navigation/core";
+
+import { firebaseAuthentication } from '../config/firebase';
+import { signOut } from 'firebase/auth';
 
 import SafeViewAndroid from '../SafeViewAndroid';
 import Navbar from '../Navbar';
 
 const SettingScreen = ({navigation}) => {
+  
+  const signOutHandler = () => {
+    signOut(firebaseAuthentication)
+    .then(() => {
+      console.log("Logout Sukses")
+    }).catch((err) => console.log(err));
+}
+
   return (
     <SafeAreaView style={[styles.container, SafeViewAndroid.AndroidSafeArea]}>
       <View style={styles.button_profile}>
@@ -27,7 +39,7 @@ const SettingScreen = ({navigation}) => {
         <Icon name="info" size={29} style={{color: "black", marginLeft: 12}} ></Icon>
         <Text style={styles.buttonText}>About App</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button_logout} onPress={() => navigation.reset({index: 0, routes: [{name: 'login'}]})}>
+      <TouchableOpacity style={styles.button_logout} onPress={() => signOutHandler()}>
         <Icon name="log-out" size={29} style={{color: "black", marginLeft: 20, marginTop: 5}} ></Icon>
         <Text style={styles.buttonText_logout}>Log Out</Text>
       </TouchableOpacity>
